@@ -16,7 +16,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = {file = "LICENSE"}
 authors = [
-    {name = "Alex Yang", email = "alex@example.com"},
+    {name = "Siya AI", email = "contact@siya.ai"},
 ]
 keywords = ["mcp", "yahoo-finance", "financial-data", "claude", "ai"]
 classifiers = [

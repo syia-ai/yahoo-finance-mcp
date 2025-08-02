@@ -5,7 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ### Core Development
-- **Run the server**: `uv run siya_yahoo_finance_mcp/server.py` - Starts the MCP server in development mode for testing with MCP Inspector
+- **Run the server**: `uvx siya-yahoo-finance-mcp` - Runs the server without installation (recommended)
+- **Run from source**: `uv run siya_yahoo_finance_mcp/server.py` - Starts the MCP server in development mode for testing with MCP Inspector
 - **Install dependencies**: `uv pip install -e .` - Installs the project in editable mode
 - **Setup environment**: `uv venv && source .venv/bin/activate` - Creates and activates virtual environment
 

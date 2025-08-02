@@ -112,14 +112,17 @@ pip install siya-siya-yahoo-finance-mcp
 
 ### Command Line Usage
 
-After installation, you can run the server directly:
+**Option 1: Run with uvx (Recommended - no installation needed):**
+```bash
+uvx siya-yahoo-finance-mcp
+```
 
+**Option 2: After installation, run directly:**
 ```bash
 siya-yahoo-finance-mcp
 ```
 
-Or for development/testing with MCP Inspector:
-
+**Option 3: Run as Python module:**
 ```bash
 python -m siya_yahoo_finance_mcp.server
 ```
@@ -128,16 +131,27 @@ python -m siya_yahoo_finance_mcp.server
 
 To integrate this server with Claude for Desktop:
 
-1. Install Claude for Desktop and the package:
-   ```bash
-   pip install siya-siya-yahoo-finance-mcp
-   ```
+1. Install Claude for Desktop
 
 2. Edit the Claude for Desktop config file:
    - **MacOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
    - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
 3. Add the server configuration:
+
+   **Option 1: Using uvx (Recommended - no installation needed):**
+   ```json
+   {
+     "mcpServers": {
+       "yfinance": {
+         "command": "uvx",
+         "args": ["siya-yahoo-finance-mcp"]
+       }
+     }
+   }
+   ```
+
+   **Option 2: Using installed package:**
    ```json
    {
      "mcpServers": {
@@ -148,13 +162,13 @@ To integrate this server with Claude for Desktop:
    }
    ```
 
-   **Alternative configuration using Python module**:
+   **Option 3: Using Python module:**
    ```json
    {
      "mcpServers": {
        "yfinance": {
          "command": "python",
-         "args": ["-m", "yahoo_finance_mcp.server"]
+         "args": ["-m", "siya_yahoo_finance_mcp.server"]
        }
      }
    }
