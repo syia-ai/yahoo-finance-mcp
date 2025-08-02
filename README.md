@@ -1,4 +1,4 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/alex2yang97-yahoo-finance-mcp-badge.png)](https://mseep.ai/app/alex2yang97-yahoo-finance-mcp)
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/alex2yang97-siya-yahoo-finance-mcp-badge.png)](https://mseep.ai/app/alex2yang97-siya-yahoo-finance-mcp)
 
 # Yahoo Finance MCP Server
 
@@ -8,7 +8,7 @@
 
 This is a Model Context Protocol (MCP) server that provides comprehensive financial data from Yahoo Finance. It allows you to retrieve detailed information about stocks, including historical prices, company information, financial statements, options data, and market news.
 
-[![smithery badge](https://smithery.ai/badge/@Alex2Yang97/yahoo-finance-mcp)](https://smithery.ai/server/@Alex2Yang97/yahoo-finance-mcp)
+[![smithery badge](https://smithery.ai/badge/@Alex2Yang97/siya-yahoo-finance-mcp)](https://smithery.ai/server/@Alex2Yang97/siya-yahoo-finance-mcp)
 
 ## Demo
 
@@ -90,15 +90,15 @@ With this MCP server, you can use Claude to:
 ### Option 1: Install from PyPI (Recommended)
 
 ```bash
-pip install yahoo-finance-mcp
+pip install siya-siya-yahoo-finance-mcp
 ```
 
 ### Option 2: Install from Source
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/Alex2Yang97/yahoo-finance-mcp.git
-   cd yahoo-finance-mcp
+   git clone https://github.com/Alex2Yang97/siya-yahoo-finance-mcp.git
+   cd siya-yahoo-finance-mcp
    ```
 
 2. Create and activate a virtual environment and install dependencies:
@@ -115,13 +115,13 @@ pip install yahoo-finance-mcp
 After installation, you can run the server directly:
 
 ```bash
-yahoo-finance-mcp
+siya-yahoo-finance-mcp
 ```
 
 Or for development/testing with MCP Inspector:
 
 ```bash
-python -m yahoo_finance_mcp.server
+python -m siya_yahoo_finance_mcp.server
 ```
 
 ### Integration with Claude for Desktop
@@ -130,7 +130,7 @@ To integrate this server with Claude for Desktop:
 
 1. Install Claude for Desktop and the package:
    ```bash
-   pip install yahoo-finance-mcp
+   pip install siya-siya-yahoo-finance-mcp
    ```
 
 2. Edit the Claude for Desktop config file:
@@ -142,7 +142,7 @@ To integrate this server with Claude for Desktop:
    {
      "mcpServers": {
        "yfinance": {
-         "command": "yahoo-finance-mcp"
+         "command": "siya-yahoo-finance-mcp"
        }
      }
    }
@@ -168,10 +168,10 @@ For development or testing with MCP Inspector:
 
 ```bash
 # If installed from source
-uv run yahoo_finance_mcp/server.py
+uv run siya_yahoo_finance_mcp/server.py
 
 # If installed via pip
-python -c "from yahoo_finance_mcp.server import main; main()"
+python -c "from siya_yahoo_finance_mcp.server import main; main()"
 ```
 
 ## License
