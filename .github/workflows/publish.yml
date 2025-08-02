@@ -13,22 +13,20 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
 
     - name: Install uv
       uses: astral-sh/setup-uv@v3
       with:
-        enable-cache: true
+        version: "latest"
 
     - name: Update version if manual trigger
       if: github.event_name == 'workflow_dispatch'
@@ -36,17 +34,46 @@ jobs:
         # Update version in pyproject.toml
         sed -i 's/version = "[^"]*"/version = "${{ github.event.inputs.version }}"/' pyproject.toml
 
-    - name: Install dependencies
+    - name: Install build dependencies
       run: |
-        uv venv
-        uv pip install build
+        uv add --dev build twine
+
+    - name: Clean previous builds
+      run: |
+        echo "🧹 Cleaning previous builds..."
+        rm -rf dist/
+        find . -type d -name "*.egg-info" -exec rm -rf {} + 2>/dev/null || true
+        find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 
     - name: Build package
       run: |
-        source .venv/bin/activate
-        python -m build
+        echo "🔨 Building package..."
+        uv run python -m build
+        echo "📦 Build artifacts:"
+        ls -la dist/
+
+    - name: Check package
+      run: |
+        echo "✅ Checking package quality..."
+        uv run twine check dist/*
 
     - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
+      run: |
+        echo "🚀 Publishing to PyPI..."
+        uv run twine upload --repository-url $TWINE_REPOSITORY_URL dist/*
+
+    - name: Verify publication
+      run: |
+        echo "⏳ Verifying publication..."
+        sleep 10
+        
+        # Get package name from pyproject.toml
+        pkg_name=$(grep '^name = ' pyproject.toml | sed 's/name = "\(.*\)"/\1/')
+        pkg_version=$(grep '^version = ' pyproject.toml | sed 's/version = "\(.*\)"/\1/')
+        
+        echo "✅ Package $pkg_name v$pkg_version successfully published!"
+        echo "🌐 Available at: https://pypi.org/project/$pkg_name/$pkg_version/"
