@@ -5,22 +5,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ### Core Development
-- **Run the server**: `uv run server.py` - Starts the MCP server in development mode for testing with MCP Inspector
+- **Run the server**: `uv run yahoo_finance_mcp/server.py` - Starts the MCP server in development mode for testing with MCP Inspector
 - **Install dependencies**: `uv pip install -e .` - Installs the project in editable mode
 - **Setup environment**: `uv venv && source .venv/bin/activate` - Creates and activates virtual environment
 
 ### Code Quality
-- **Format code**: `black server.py` - Formats Python code using Black (line length: 100)
-- **Sort imports**: `isort server.py` - Sorts imports according to the Black profile
-- **Type checking**: `mypy server.py` - Runs type checking (strict mode enabled)
-- **Security check**: `bandit server.py` - Runs security analysis
+- **Format code**: `black yahoo_finance_mcp/` - Formats Python code using Black (line length: 100)
+- **Sort imports**: `isort yahoo_finance_mcp/` - Sorts imports according to the Black profile
+- **Type checking**: `mypy yahoo_finance_mcp/` - Runs type checking (strict mode enabled)
+- **Security check**: `bandit yahoo_finance_mcp/` - Runs security analysis
 
 ## Project Architecture
 
 ### Core Components
 This is a Model Context Protocol (MCP) server built with FastMCP that provides comprehensive financial data access through Yahoo Finance APIs.
 
-#### Main Server (`server.py`)
+#### Main Server (`yahoo_finance_mcp/server.py`)
 - **FastMCP Server**: Single-file MCP server implementation using the FastMCP framework
 - **Tool Registration**: All financial data tools are registered as async functions with the `@yfinance_server.tool` decorator
 - **Data Models**: Uses Pydantic enums for type safety (FinancialType, HolderType, RecommendationType)

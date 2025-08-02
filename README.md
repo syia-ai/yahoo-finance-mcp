@@ -121,7 +121,7 @@ yahoo-finance-mcp
 Or for development/testing with MCP Inspector:
 
 ```bash
-python -m server
+python -m yahoo_finance_mcp.server
 ```
 
 ### Integration with Claude for Desktop
@@ -154,7 +154,7 @@ To integrate this server with Claude for Desktop:
      "mcpServers": {
        "yfinance": {
          "command": "python",
-         "args": ["-m", "server"]
+         "args": ["-m", "yahoo_finance_mcp.server"]
        }
      }
    }
@@ -168,10 +168,10 @@ For development or testing with MCP Inspector:
 
 ```bash
 # If installed from source
-uv run server.py
+uv run yahoo_finance_mcp/server.py
 
 # If installed via pip
-python -c "from server import main; main()"
+python -c "from yahoo_finance_mcp.server import main; main()"
 ```
 
 ## License
