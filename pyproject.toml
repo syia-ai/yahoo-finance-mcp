@@ -1,13 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "yahoo-finance-mcp"
 version = "0.1.0"
 description = "MCP server implementation for yahoo finance integration"
 readme = "README.md"
 requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Alex Yang", email = "alex@example.com"},
+]
+keywords = ["mcp", "yahoo-finance", "financial-data", "claude", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = [
     "mcp[cli]>=1.6.0",
     "yfinance>=0.2.62",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Alex2Yang97/yahoo-finance-mcp"
+Repository = "https://github.com/Alex2Yang97/yahoo-finance-mcp"
+Issues = "https://github.com/Alex2Yang97/yahoo-finance-mcp/issues"
+
+[project.scripts]
+yahoo-finance-mcp = "server:main"
 
 [project.optional-dependencies]
 dev = [
